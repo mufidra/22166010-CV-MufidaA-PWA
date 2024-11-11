@@ -71,7 +71,7 @@ function showNotification() {
   const title = 'Hallo!';
   const options = {
     body: 'Selamat Datang di Web Portofolio Mufida. Terimakasih telah mengunjungi!',
-    icon: '/22166010-CV-MufidaA-PWA/image-icon.png'
+    icon: 'https://mufidacv-pwa.vercel.app/image-icon.png'
   };
 
   // Menampilkan notifikasi
@@ -89,7 +89,7 @@ self.addEventListener('message', event => {
 self.addEventListener('notificationclick', event => {
   event.notification.close(); // Menutup notifikasi saat diklik
   event.waitUntil(
-    clients.openWindow('https://mufidra.github.io/22166010-CV-MufidaA-PWA/') // URL yang akan dibuka saat notifikasi diklik
+    clients.openWindow('https://mufidacv-pwa.vercel.app') // URL yang akan dibuka saat notifikasi diklik
   );
 });
 
@@ -97,7 +97,7 @@ self.addEventListener('notificationclick', event => {
 self.addEventListener('push', function(event) {
   const options = {
     body: event.data.text(),
-    icon: '/22166010-CV-MufidaA-PWA/image-icon.png',
+    icon: 'https://mufidacv-pwa.vercel.app/image-icon.png',
   };
 
   event.waitUntil(
