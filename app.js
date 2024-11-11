@@ -33,7 +33,7 @@ navbarLinks.forEach(link => {
 
 // Service Worker registration
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/22166010-CV-MufidaA-PWA/sw.js') // ganti dengan path absolut
+    navigator.serviceWorker.register('/mufidacv-pwa/sw.js') // ganti dengan path absolut
         .then(reg => {
             console.log('Service Worker registered:', reg);
         })
@@ -173,7 +173,7 @@ getAllContacts();
 
 // Memeriksa apakah service worker didukung oleh browser
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/22166010-CV-MufidaA-PWA/sw.js')
+  navigator.serviceWorker.register('/mufidacv-pwa/sw.js')
     .then(registration => {
       console.log('Service Worker terdaftar:', registration);
     })
