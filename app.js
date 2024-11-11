@@ -33,7 +33,7 @@ navbarLinks.forEach(link => {
 
 // Service Worker registration
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register(https://mufidacv-pwa.vercel.app/sw.js') // ganti dengan path absolut
+    navigator.serviceWorker.register('https://mufidacv-pwa.vercel.app/sw.js') // ganti dengan path absolut
         .then(reg => {
             console.log('Service Worker registered:', reg);
         })
