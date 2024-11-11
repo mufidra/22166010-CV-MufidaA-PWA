@@ -4,12 +4,12 @@ const precachedAssets = [
     '/index.html',
     '/style.css',
     '/script.js',
-    '/images/image.jpg',
-    '/images/image-icon.png',
+    '/image.jpg',
+    '/image-icon.png',
     '/app.js',
     '/manifest.json',
-    '/images/image1.png',
-    '/images/image2.png',
+    '/image1.png',
+    '/image2.png',
 ];
 
 self.addEventListener('install', (event) => {
@@ -66,39 +66,41 @@ self.addEventListener('fetch', (event) => {
     }
 });
 
-self.addEventListener('install', event => {
-    console.log('Service Worker diinstall');
-    self.skipWaiting();
-  });
-  
-  self.addEventListener('activate', event => {
-    console.log('Service Worker diaktifkan');
-  });
-  
-  // Mendengarkan pesan dari app.js untuk menampilkan notifikasi
-  self.addEventListener('message', event => {
-    if (event.data && event.data.type === 'SHOW_NOTIFICATION') {
-      showNotification();
-    }
-  });
-  
-  // Fungsi untuk menampilkan notifikasi
-  function showNotification() {
-    const title = 'Hallo!';
-    const options = {
-      body: 'Selamat Datang di Web Portofolio Mufida. Terimakasih telah mengunjungi!',
-      icon: '/path/to/image-icon.png'
-    };
-  
-    // Menampilkan notifikasi
-    self.registration.showNotification(title, options);
+// Fungsi untuk menampilkan notifikasi
+function showNotification() {
+  const title = 'Hallo!';
+  const options = {
+    body: 'Selamat Datang di Web Portofolio Mufida. Terimakasih telah mengunjungi!',
+    icon: '/22166010-CV-MufidaA-PWA/image-icon.png'
+  };
+
+  // Menampilkan notifikasi
+  self.registration.showNotification(title, options);
+}
+
+// Event listener untuk pesan dari aplikasi utama
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SHOW_NOTIFICATION') {
+    showNotification(); // Panggil fungsi untuk menampilkan notifikasi
   }
-  
-  // Menangani klik pada notifikasi
-  self.addEventListener('notificationclick', event => {
-    event.notification.close(); // Menutup notifikasi saat diklik
-    event.waitUntil(
-      clients.openWindow('https://mufidra.github.io/Portofolio-PWA/') // URL yang akan dibuka saat notifikasi diklik
-    );
-  });
-  
+});
+
+// Event listener untuk menangani klik pada notifikasi
+self.addEventListener('notificationclick', event => {
+  event.notification.close(); // Menutup notifikasi saat diklik
+  event.waitUntil(
+    clients.openWindow('https://mufidra.github.io/22166010-CV-MufidaA-PWA/') // URL yang akan dibuka saat notifikasi diklik
+  );
+});
+
+// Optional: jika Anda ingin mendukung push notifications
+self.addEventListener('push', function(event) {
+  const options = {
+    body: event.data.text(),
+    icon: '/22166010-CV-MufidaA-PWA/image-icon.png',
+  };
+
+  event.waitUntil(
+    self.registration.showNotification('Push Notification', options)
+  );
+});
